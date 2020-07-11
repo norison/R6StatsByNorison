@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{038A4BEA-012B-423F-A44E-AF11CBFA6002}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>R6API</RootNamespace>
+    <AssemblyName>R6API</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\R6Stats\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connection\API.cs" />
+    <Compile Include="Converters\OperatorCategoryConverter.cs" />
+    <Compile Include="Converters\PlatformConverter.cs" />
+    <Compile Include="Converters\RegionConverter.cs" />
+    <Compile Include="Converters\TimeSpanFromSecondsConverter.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Enums\EnumsExtensions.cs" />
+    <Compile Include="Models\Operator\Figure.cs" />
+    <Compile Include="Models\Operator\Operator.cs" />
+    <Compile Include="Models\Operator\OperatorDef.cs" />
+    <Compile Include="Models\Operator\Operators.cs" />
+    <Compile Include="Models\Player\Player.cs" />
+    <Compile Include="Models\Progress\Progression.cs" />
+    <Compile Include="Models\Rank\Rank.cs" />
+    <Compile Include="Models\Season\Season.cs" />
+    <Compile Include="Models\Season\SeasonColor.cs" />
+    <Compile Include="Models\Stat\BombStats.cs" />
+    <Compile Include="Models\Stat\CasualStats.cs" />
+    <Compile Include="Models\Stat\GeneralStats.cs" />
+    <Compile Include="Models\Stat\HostageStats.cs" />
+    <Compile Include="Models\Stat\RankedStats.cs" />
+    <Compile Include="Models\Stat\SecureAreaStats.cs" />
+    <Compile Include="Models\Stat\Stats.cs" />
+    <Compile Include="Models\Weapon\Weapon.cs" />
+    <Compile Include="Models\Weapon\WeaponDef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,81 @@
+﻿<Window x:Class="R6Stats.ErrorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Style="{DynamicResource ModalWindow}"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        FontSize="12"
+        WindowStartupLocation="CenterScreen"
+        Height="120"
+        BorderBrush="Black"
+        BorderThickness="2"
+        Padding="10"
+        Width="250">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="10 0 0 0"
+            Foreground="{DynamicResource combo}"
+            Text="{Binding Title}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
+        <Button
+            WindowChrome.IsHitTestVisibleInChrome="True"
+            HorizontalAlignment="Right"
+            Command="{Binding CloseCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+            Style="{DynamicResource MaterialDesignFlatButton}"
+            Padding="0"
+            Width="30"
+            Height="20">
+            <materialDesign:PackIcon Kind="WindowClose" />
+        </Button>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="0 15 0 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <materialDesign:PackIcon
+                    Foreground="{DynamicResource combo}"
+                    Kind="WarningDecagram"
+                    Width="30"
+                    Height="30"
+                    Margin="0 0 10 0"/>
+                <TextBlock
+                Text="{Binding Message}"
+                Foreground="{DynamicResource combo}"
+                TextWrapping="Wrap"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
+            
+
+            <Button 
+                Content="OKAY"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Style="{DynamicResource MaterialDesignFlatButton}"
+                Command="{Binding CloseCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                Padding="0"
+                Width="50"
+                Height="30"
+                Margin="0 0 50 10"/>
+        </Grid>
+    </Grid>
+</Window>

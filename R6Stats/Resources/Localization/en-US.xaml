@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:R6Stats"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <system:String x:Key="AddPlayer">Add player</system:String>
+    
+    <system:String x:Key="Theme">Theme</system:String>
+    <system:String x:Key="Dark">Dark</system:String>
+    <system:String x:Key="Light">Light</system:String>
+
+    <system:String x:Key="Language">Language</system:String>
+    <system:String x:Key="Ru">Russian</system:String>
+    <system:String x:Key="Eng">English</system:String>
+
+
+    <system:String x:Key="Sortby">Sort:</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Platform">Platform</system:String>
+    <system:String x:Key="UserId">UserId</system:String>
+    <system:String x:Key="Search">Search</system:String>
+    <system:String x:Key="Stats">Show stats</system:String>
+    <system:String x:Key="MoreInfo">More info</system:String>
+    <system:String x:Key="Remove">Remove</system:String>
+    
+    <system:String x:Key="Overview">Overview</system:String>
+    <system:String x:Key="Operators">Operators</system:String>
+    <system:String x:Key="Seasons">Seasons</system:String>
+    <system:String x:Key="Weapons">Weapons</system:String>
+
+    <system:String x:Key="General">General</system:String>
+    <system:String x:Key="Casual">Casual</system:String>
+    <system:String x:Key="Ranked">Ranked</system:String>
+    <system:String x:Key="Bomb">Bomb</system:String>
+    <system:String x:Key="Secure Area">Secure area</system:String>
+    <system:String x:Key="Hostage">Hostage</system:String>
+
+    <system:String x:Key="Operation">OPERATION</system:String>
+
+    <system:String x:Key="KD">K/D</system:String>
+    <system:String x:Key="WL">W/L</system:String>
+    <system:String x:Key="TimePlayed">Time played</system:String>
+    <system:String x:Key="Matches">Matches</system:String>
+    <system:String x:Key="Kills">Kills</system:String>
+    <system:String x:Key="Deaths">Deaths</system:String>
+    <system:String x:Key="Assists">Assists</system:String>
+    <system:String x:Key="Sucicides">Sucicides</system:String>
+    <system:String x:Key="Wins">Wins</system:String>
+    <system:String x:Key="Losses">Losses</system:String>
+    <system:String x:Key="BlindKills">Blind kills</system:String>
+    <system:String x:Key="PenetrationKills">Penetration kills</system:String>
+    <system:String x:Key="BulletsShot">Bullets shot</system:String>
+    <system:String x:Key="BulletsHits">Hits</system:String>
+    <system:String x:Key="Headshots">Headshots</system:String>
+    <system:String x:Key="Revives">Revives</system:String>
+    <system:String x:Key="MeleeKills">Melee kills</system:String>
+    <system:String x:Key="BestScore">Best score</system:String>
+    <system:String x:Key="RoundsWon">Rounds won</system:String>
+    <system:String x:Key="RoundsLost">Rounds lost</system:String>
+    <system:String x:Key="Abandons">Abandons</system:String>
+    <system:String x:Key="Max">Max</system:String>
+    <system:String x:Key="Skill">Skill</system:String>
+
+    <system:String x:Key="Attackers">Attackers</system:String>
+    <system:String x:Key="Defenders">Defenders</system:String>
+
+    <system:String x:Key="Updated">Updated</system:String>
+    <system:String x:Key="Minutes ago">ago</system:String>
+    <system:String x:Key="UpdateStats">Update player stats</system:String>
+
+    <system:String x:Key="Level">Level</system:String>
+
+
+    <system:String x:Key="HelpPart1">If this program was useful to you,</system:String>
+    <system:String x:Key="HelpPart2">then you can support the developer</system:String>
+
+    <system:String x:Key="Show Details">Show details</system:String>
+
+    <system:String x:Key="DetailsPart1">This program was created by norison</system:String>
+    <system:String x:Key="DetailsPart2">and I will support it, you can send a</system:String>
+    <system:String x:Key="DetailsPart3">non-volatile donation to further develop</system:String>
+    <system:String x:Key="DetailsPart4">the project!</system:String>
+
+</ResourceDictionary>

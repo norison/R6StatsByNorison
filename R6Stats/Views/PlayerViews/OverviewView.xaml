@@ -1,0 +1,279 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    x:Class="R6Stats.OverviewView"
+    Style="{DynamicResource page}"
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800"
+    Title="OverviewView">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Duration="0:0:0.3" Storyboard.TargetProperty="Margin" From="0,500,0,-500" To="0" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Unloaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Margin" From="0" To="-500,0,500,0" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Auto" 
+        VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!-- General -->
+                <GroupBox
+                Header="{DynamicResource General}"
+                Background="Transparent"
+                Style="{DynamicResource MaterialDesignGroupBox}"
+                Margin="16"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Kills}"/>
+                            <TextBlock Text="{Binding Stats.General.Kills}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Text="{Binding Stats.General.MatchWon}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource BulletsShot}"/>
+                            <TextBlock Text="{Binding Stats.General.BulletHits}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Deaths}"/>
+                            <TextBlock Text="{Binding Stats.General.Deaths}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Text="{Binding Stats.General.MatchLost}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Headshots}"/>
+                            <TextBlock Text="{Binding Stats.General.Headshots}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Assists}"/>
+                            <TextBlock Text="{Binding Stats.General.KillAssists}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource BlindKills}"/>
+                            <TextBlock Text="{Binding Stats.General.BlindKills}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Revives}"/>
+                            <TextBlock Text="{Binding Stats.General.Revives}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3" Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Sucicides}"/>
+                            <TextBlock Text="{Binding Stats.General.Sucicides}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource PenetrationKills}"/>
+                            <TextBlock Text="{Binding Stats.General.PenetrationKills}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource MeleeKills}"/>
+                            <TextBlock Text="{Binding Stats.General.MeleeKills}"/>
+                        </StackPanel>
+                    </Grid>
+
+                </GroupBox>
+
+                <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Casual -->
+                <GroupBox
+                Header="{DynamicResource Casual}"
+                Style="{DynamicResource MaterialDesignGroupBox}"
+                Margin="16"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource TimePlayed}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Matches}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Kills}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Deaths}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="{Binding Stats.Casual.TimePlayed, StringFormat={}{0:dd'd 'hh'h 'mm'm 'ss's'}}"/>
+                            <TextBlock Text="{Binding Stats.Casual.MatchWon}"/>
+                            <TextBlock Text="{Binding Stats.Casual.MatchLost}"/>
+                            <TextBlock Text="{Binding Stats.Casual.MatchPlayed}"/>
+                            <TextBlock Text="{Binding Stats.Casual.Kills}"/>
+                            <TextBlock Text="{Binding Stats.Casual.Deaths}"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </GroupBox>
+
+                <!-- Ranked -->
+                <GroupBox
+                 Grid.Column="1"
+                 Header="{DynamicResource Ranked}"
+                 Style="{DynamicResource MaterialDesignGroupBox}"
+                 Margin="16"
+                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                 BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource TimePlayed}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Matches}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Kills}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Deaths}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="{Binding Stats.Ranked.TimePlayed, StringFormat={}{0:dd'd 'hh'h 'mm'm 'ss's'}}"/>
+                            <TextBlock Text="{Binding Stats.Ranked.MatchWon}"/>
+                            <TextBlock Text="{Binding Stats.Ranked.MatchLost}"/>
+                            <TextBlock Text="{Binding Stats.Ranked.MatchPlayed}"/>
+                            <TextBlock Text="{Binding Stats.Ranked.Kills}"/>
+                            <TextBlock Text="{Binding Stats.Ranked.Deaths}"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </GroupBox>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Bomb -->
+                <GroupBox
+                 Header="{DynamicResource Bomb}"
+                 Style="{DynamicResource MaterialDesignGroupBox}"
+                 Margin="16"
+                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                 BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource BestScore}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Matches}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="{Binding Stats.Bomb.BestScore}"/>
+                            <TextBlock Text="{Binding Stats.Bomb.MatchWon}"/>
+                            <TextBlock Text="{Binding Stats.Bomb.MatchLost}"/>
+                            <TextBlock Text="{Binding Stats.Bomb.MatchPlayed}"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <!-- Secure Area -->
+                <GroupBox
+                 Grid.Column="1"
+                 Header="{DynamicResource Secure Area}"
+                 Style="{DynamicResource MaterialDesignGroupBox}"
+                 Margin="16"
+                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                 BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource BestScore}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Matches}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="{Binding Stats.SecureArea.BestScore}"/>
+                            <TextBlock Text="{Binding Stats.SecureArea.MatchWon}"/>
+                            <TextBlock Text="{Binding Stats.SecureArea.MatchLost}"/>
+                            <TextBlock Text="{Binding Stats.SecureArea.MatchPlayed}"/>
+                        </StackPanel>
+                    </Grid>
+
+                </GroupBox>
+
+                <!-- Hostage -->
+                <GroupBox
+                 Grid.Column="2"
+                 Header="{DynamicResource Hostage}"
+                 Style="{DynamicResource MaterialDesignGroupBox}"
+                 Margin="16"
+                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                 BorderThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource BestScore}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Wins}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Losses}"/>
+                            <TextBlock Style="{DynamicResource OverviewTextBlock}" Text="{DynamicResource Matches}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="{Binding Stats.Hostage.BestScore}"/>
+                            <TextBlock Text="{Binding Stats.Hostage.MatchWon}"/>
+                            <TextBlock Text="{Binding Stats.Hostage.MatchLost}"/>
+                            <TextBlock Text="{Binding Stats.Hostage.MatchPlayed}"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

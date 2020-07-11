@@ -1,0 +1,113 @@
+﻿<Window x:Class="R6Stats.SearchView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:R6Stats"
+        mc:Ignorable="d"
+        Height="150"
+        Width="300"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Style="{DynamicResource ModalWindow}"
+        FontSize="12"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        BorderThickness="1"
+        Name="window">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.DataContext>
+        <local:SearchViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <local:PlatformConverter x:Key="platformConverter"/>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="5 0 0 0"
+                        Foreground="White"> 
+                        <Run Text="R6Stats"/> <Run Foreground="{Binding ElementName=window, Path=Foreground}" Text="by norison"/>
+            </TextBlock>
+
+            <Button
+                    Command="{Binding ExitCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                    WindowChrome.IsHitTestVisibleInChrome="True"
+                    HorizontalAlignment="Right"
+                    Style="{DynamicResource MaterialDesignFlatButton}"
+                    Padding="0"
+                    Width="30"
+                    Height="20">
+                <materialDesign:PackIcon Kind="WindowClose" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox
+                    materialDesign:HintAssist.Hint="username"
+                    HorizontalContentAlignment="Center"
+                    Width="100"
+                    Margin="0 0 0 10"
+                    BorderBrush="{DynamicResource combo}"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 10">
+                    <RadioButton
+                        Name="uplay"
+                        Command="{Binding PlatformCommand}"
+                        CommandParameter="{Binding ElementName=uplay, Path=Name, Converter={StaticResource platformConverter}}"
+                        Style="{DynamicResource MaterialDesignTabRadioButton}"
+                        MinWidth="0"
+                        IsChecked="True">
+                        <materialDesign:PackIcon Kind="Windows" />
+                    </RadioButton>
+                    <RadioButton
+                        x:Name="psn"
+                        Command="{Binding PlatformCommand}"
+                        CommandParameter="{Binding ElementName=psn, Path=Name, Converter={StaticResource platformConverter}}"
+                        Style="{DynamicResource MaterialDesignTabRadioButton}" 
+                        MinWidth="0">
+                        <materialDesign:PackIcon Kind="SonyPlaystation" />
+                    </RadioButton>
+                    <RadioButton
+                        x:Name="xbl"
+                        Command="{Binding PlatformCommand}"
+                        CommandParameter="{Binding ElementName=xbl, Path=Name, Converter={StaticResource platformConverter}}"
+                        Style="{DynamicResource MaterialDesignTabRadioButton}"
+                        MinWidth="0">
+                        <materialDesign:PackIcon Kind="Xbox" />
+                    </RadioButton>
+                </StackPanel>
+                <Button
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                    Style="{DynamicResource MaterialDesignFlatButton}"
+                    HorizontalAlignment="Center"
+                    Content="{materialDesign:PackIcon Kind=Search}"/>
+            </StackPanel>
+            <ProgressBar
+                VerticalAlignment="Bottom"
+                Visibility="{Binding Visibility}"
+                IsIndeterminate="{Binding IsIndeterminate}" />
+        </Grid>
+    </Grid>
+</Window>

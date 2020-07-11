@@ -1,0 +1,240 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    x:Class="R6Stats.OperatorsView"
+    mc:Ignorable="d"
+      Style="{DynamicResource page}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      x:Name="page"
+      Title="OperatorsView">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Duration="0:0:0.3" Storyboard.TargetProperty="Margin" From="0,500,0,-500" To="0" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Grid>
+        <materialDesign:DialogHost
+            Visibility="{Binding IconsShowType}"
+            IsOpen="{Binding IsDialogOpen}"
+            CloseOnClickAway="True">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="0 20 0 0">
+                    <!-- Attackers -->
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Margin="20 0 20 0"
+                            Text="{DynamicResource Attackers}"/>
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Margin="20 0 20 0"
+                            Text="{DynamicResource Sortby}"/>
+
+                        <ComboBox
+                            BorderBrush="{DynamicResource combo}"
+                            Name="atkBox"
+                            Margin="0"
+                            Padding="0"
+                            SelectedIndex="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SortAtkCommand}" CommandParameter="{Binding ElementName=atkBox, Path=SelectedItem.Tag}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ComboBoxItem Tag="Name" Content="{DynamicResource Name}"/>
+                            <ComboBoxItem Tag="KD" Content="{DynamicResource KD}"/>
+                            <ComboBoxItem Tag="WL" Content="{DynamicResource WL}"/>
+                            <ComboBoxItem Tag="Wins" Content="{DynamicResource Wins}"/>
+                            <ComboBoxItem Tag="Losses" Content="{DynamicResource Losses}"/>
+                            <ComboBoxItem Tag="Kills" Content="{DynamicResource Kills}"/>
+                            <ComboBoxItem Tag="Deaths" Content="{DynamicResource Deaths}"/>
+                            <ComboBoxItem Tag="Headshots" Content="{DynamicResource Headshots}"/>
+                            <ComboBoxItem Tag="MeleeKills" Content="{DynamicResource MeleeKills}"/>
+                            <ComboBoxItem Tag="TimePlayed" Content="{DynamicResource TimePlayed}"/>
+                        </ComboBox>
+                    </WrapPanel>
+                    <ListBox
+                 ItemsSource="{Binding AtkView}"
+                        Name="AtkListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Margin="0"
+                                    Padding="0"
+                                    Height="70"
+                                    Width="70"
+                                    Style="{DynamicResource MaterialDesignFlatButton}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Page, Mode=FindAncestor}, Path=DataContext.ShowAtkStatsCommand}"
+                                    CommandParameter="{Binding ElementName=name, Path=Text}">
+                                    <StackPanel>
+                                        <Image Width="50" Height="50" Source="{Binding Badge}"/>
+                                        <TextBlock Name="name" Style="{DynamicResource ReadMoreTextBlock}" HorizontalAlignment="Center" Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <!-- Defenders -->
+                    <WrapPanel
+                        Margin="0 20 0 0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Margin="20 0 20 0"
+                            Text="{DynamicResource Defenders}"/>
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            Margin="20 0 20 0"
+                            Text="{DynamicResource Sortby}"/>
+
+                        <ComboBox
+                            BorderBrush="{DynamicResource combo}"
+                            Name="defBox"
+                            Margin="0"
+                            Padding="0"
+                            SelectedIndex="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SortDefCommand}" CommandParameter="{Binding ElementName=defBox, Path=SelectedItem.Tag}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ComboBoxItem Tag="Name" Content="{DynamicResource Name}"/>
+                            <ComboBoxItem Tag="KD" Content="{DynamicResource KD}"/>
+                            <ComboBoxItem Tag="WL" Content="{DynamicResource WL}"/>
+                            <ComboBoxItem Tag="Wins" Content="{DynamicResource Wins}"/>
+                            <ComboBoxItem Tag="Losses" Content="{DynamicResource Losses}"/>
+                            <ComboBoxItem Tag="Kills" Content="{DynamicResource Kills}"/>
+                            <ComboBoxItem Tag="Deaths" Content="{DynamicResource Deaths}"/>
+                            <ComboBoxItem Tag="Headshots" Content="{DynamicResource Headshots}"/>
+                            <ComboBoxItem Tag="MeleeKills" Content="{DynamicResource MeleeKills}"/>
+                            <ComboBoxItem Tag="TimePlayed" Content="{DynamicResource TimePlayed}"/>
+                        </ComboBox>
+                    </WrapPanel>
+                    <ListBox
+                        x:Name="DefListBox"
+                 ItemsSource="{Binding DefView}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                            Margin="0"
+                            Padding="0"
+                            Height="70"
+                            Width="70"
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page, Mode=FindAncestor}, Path=DataContext.ShowDefStatsCommand}"
+                            CommandParameter="{Binding ElementName=name, Path=Text}">
+                                    <StackPanel>
+                                        <Image Width="50" Height="50" Source="{Binding Badge}"/>
+                                        <TextBlock Name="name" Style="{DynamicResource ReadMoreTextBlock}" HorizontalAlignment="Center" Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <!-- Dialog Content -->
+            <materialDesign:DialogHost.DialogContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Button
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        HorizontalAlignment="Right"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                        <materialDesign:PackIcon Kind="WindowClose" />
+                    </Button>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            VerticalAlignment="Center"
+                            Stretch="Uniform"
+                            MaxWidth="600"
+                            MaxHeight="600"
+                            Source="{Binding SelectedOperator.Figure}"/>
+
+                        <GroupBox
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Header="{Binding SelectedOperator.Name}"
+                             FontSize="20"
+                             Background="Transparent"
+                             Style="{DynamicResource MaterialDesignGroupBox}"
+                             Margin="16"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             BorderThickness="0"
+                             Grid.Column="1">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Margin="5">
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource TimePlayed}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.TimePlayed, StringFormat={}{0:dd'd 'hh'h 'mm'm 'ss's'}}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource KD}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.KD, StringFormat={}{0:F}}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource WL}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.WL, StringFormat={}{0:F}%}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="5">
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource RoundsWon}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Wins}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource RoundsLost}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Losses}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource Headshots}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Headshots}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2" Margin="5">
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource MeleeKills}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Melees}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource Kills}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Kills}"/>
+                                    <TextBlock Style="{DynamicResource OverviewTextBlockModal}" Text="{DynamicResource Deaths}"/>
+                                    <TextBlock Style="{DynamicResource DefTextBlock}" Text="{Binding SelectedOperator.Deaths}"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Grid>
+
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+    </Grid>
+</Page>

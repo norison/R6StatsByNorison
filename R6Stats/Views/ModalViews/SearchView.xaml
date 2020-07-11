@@ -78,7 +78,7 @@
                         Style="{DynamicResource MaterialDesignTabRadioButton}"
                         MinWidth="0"
                         IsChecked="True">
-                        <materialDesign:PackIcon Kind="Windows" />
+                        <materialDesign:PackIcon Kind="DesktopWindows" />
                     </RadioButton>
                     <RadioButton
                         x:Name="psn"
@@ -94,7 +94,7 @@
                         CommandParameter="{Binding ElementName=xbl, Path=Name, Converter={StaticResource platformConverter}}"
                         Style="{DynamicResource MaterialDesignTabRadioButton}"
                         MinWidth="0">
-                        <materialDesign:PackIcon Kind="Xbox" />
+                        <materialDesign:PackIcon Kind="XboxLive" />
                     </RadioButton>
                 </StackPanel>
                 <Button
